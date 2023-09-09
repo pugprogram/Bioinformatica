@@ -29,7 +29,7 @@ def CompareString(name1, name2):
 
 def alghorythm(ValueForCompare,FileName):
     dictForData={}
-    with open(FileName,"r") as f:
+    with open(FileName,'r') as f:
         NewIdentificator=""
         value=""
         for line in f:
@@ -48,12 +48,14 @@ def alghorythm(ValueForCompare,FileName):
 
 def WritingToFile(nameFile,Result,IdentificatorForCompare):
     file=open(nameFile,'a')
-    file.write("Input Identificator:")
+    file.write("Input Identificator:\n")
     file.write(IdentificatorForCompare)
-    file.write("Result:")
+    file.write("\n")
+    file.write("Result:\n")
     for value in Result.keys():
         #print(value)
         file.write(value)
+        file.write("\n")
     file.close()
     
 
@@ -61,8 +63,11 @@ def WritingToFile(nameFile,Result,IdentificatorForCompare):
 if __name__ == "__main__":
     InputData=output("lab_0.txt")
     Result={}
-    for value in InputData.values():
-        print(value)
+    n=1
+    for key,value in InputData.items():
+        name="output.txt"
+        #Result=alghorythm(value,"uniprot_sprot.fasta")
         Result=alghorythm(value,"uniprot_sprot.fasta")
         sorted_value=sorted(Result.items(),key=lambda item:item[1])
-        WritingToFile("output.txt",Result,value)
+        WritingToFile(name,Result,key)
+        n+=1
