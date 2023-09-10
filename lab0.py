@@ -52,10 +52,14 @@ def WritingToFile(nameFile,Result,IdentificatorForCompare):
     file.write(IdentificatorForCompare)
     file.write("\n")
     file.write("Result:\n")
+    n=1
     for value in Result.keys():
         #print(value)
         file.write(value)
         file.write("\n")
+        if n==100:
+        	break;
+        n+=1
     file.close()
     
 
